@@ -16,6 +16,8 @@ gem 'simple_form'
 gem 'reform-rails'
 gem 'haml'
 
+gem 'devise'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -23,6 +25,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :development do
