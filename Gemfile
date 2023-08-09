@@ -17,6 +17,10 @@ gem 'reform-rails'
 gem 'haml'
 
 gem 'devise'
+gem 'devise-two-factor'
+gem 'dotenv-rails'
+gem 'rqrcode'
+gem 'twilio-ruby'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
