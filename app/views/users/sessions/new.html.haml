@@ -1,0 +1,8 @@
+%h2 Log in
+= simple_form_for(resource, as: resource_name, url: new_user_session_path) do |f|
+  .form-inputs
+    = f.input :email, autofocus: true, input_html: { autocomplete: "email" }
+    = f.input :password, input_html: { autocomplete: "current-password" }
+  .form-actions
+    = f.submit "Log in"
+= render "users/shared/links"

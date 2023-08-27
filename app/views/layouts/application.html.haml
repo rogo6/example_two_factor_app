@@ -11,10 +11,8 @@
   %body
     %section
       - if user_signed_in?
-        = button_to 'Logout', destroy_user_session_path, method: :delete
-      - else
-        = link_to 'Login', new_user_session_path
+        = link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }
       %section.mt-10
-      - flash.each do |name, msg|
-        = content_tag :dialog, msg, role: name
+        %p.notice= notice
+        %p.alert= alert
     = yield

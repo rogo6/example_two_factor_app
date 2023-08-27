@@ -1,0 +1,5 @@
+= simple_form_for form, url: user_path(form.model), html: { method: :patch, id: dom_id(form.model) } do |f|
+  = f.input :email
+  = f.input :phone_number
+  = f.input :two_factor_auth_method, collection: User.two_factor_auth_methods.keys, include_blank: false
+  = f.submit
