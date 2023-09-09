@@ -9,11 +9,15 @@ class GenerateTwoFactorAuthCodeCommand
     return :authenticator if user.authenticator_two_factor_auth_method?
 
     if valid_twilio_number?
+      SendSmsCommand.call(user)
       :sms
     else
       DeviseMailer.send_two_factor_code(user).deliver_now
       :email
     end
+  rescue Twilio::REST::RestError
+    DeviseMailer.send_two_factor_code(user).deliver_now
+    :email
   end
 
   private

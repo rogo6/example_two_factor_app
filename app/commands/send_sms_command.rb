@@ -1,21 +1,21 @@
 class SendSmsCommand
   extend BaseCommand
 
-  def initialize(resource)
-    @resource = resource
+  def initialize(user)
+    @user = user
   end
 
   def call
     client.messages.create(
       from: ENV.fetch('TWILIO_PHONE_NUMBER', nil),
-      to: resource.phone_number,
-      body: "Your six digit code: #{resource.current_otp}"
+      to: user.phone_number,
+      body: "Your six digit code: #{user.current_otp}"
     )
   end
 
   private
 
-  attr_reader :resource
+  attr_reader :user
 
   def client
     @client ||= ::Twilio::REST::Client.new
