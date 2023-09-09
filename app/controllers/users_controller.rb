@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone_number, :two_factor_auth_method)
+    params.require(:user).permit(:email, :phone_number, :otp_required_for_login, :two_factor_auth_method)
   end
 end

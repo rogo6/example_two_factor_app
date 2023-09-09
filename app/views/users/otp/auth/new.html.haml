@@ -1,0 +1,7 @@
+= form_with(url: users_sign_in_otp_path, scope: :user, method: :post) do |f|
+  = auth_code_info_message(session[:otp_send_method])
+  =  f.text_field :otp_attempt, class: 'form-control', placeholder: 'Six digit code', autocomplete: 'off', autofocus: true, required: true
+  - unless resource.authenticator_two_factor_auth_method?
+    %span= "Didn't receive code?"
+    = link_to 'Send again', users_otp_regenerate_path, data: { turbo_method: :post }
+  = f.submit 'Login'

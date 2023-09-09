@@ -5,6 +5,7 @@ module Users
     property :email
     property :phone_number
     property :two_factor_auth_method
+    property :otp_required_for_login
 
     validates :email, presence: true
     validates :two_factor_auth_method, inclusion: { in: User.two_factor_auth_methods.keys }
@@ -14,9 +15,20 @@ module Users
       return unless validate(attr)
 
       save
+      generate_otp_secret!
+    end
+
+    def authenticator_two_factor_auth_method?
+      two_factor_auth_method == 'authenticator'
     end
 
     private
+
+    def generate_otp_secret!
+      return if model.otp_secret.present?
+
+      model.update!(otp_secret: User.generate_otp_secret)
+    end
 
     def sms_auth_method?
       two_factor_auth_method == 'sms'
