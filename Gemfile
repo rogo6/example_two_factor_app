@@ -41,4 +41,6 @@ group :test do
   gem 'vcr'
   gem 'database_cleaner', require: false
   gem "webdrivers"
+  gem 'rspec-rails'
+  gem 'webmock', require: false
 end

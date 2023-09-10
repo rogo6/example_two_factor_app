@@ -1,5 +1,5 @@
 module Users
-  class UpdateForm < Reform::Form
+  class UpdateForm < ::Reform::Form
     model User
 
     property :email
