@@ -14,8 +14,10 @@ module Users
     def save_form(attr = {})
       return unless validate(attr)
 
-      save
-      generate_otp_secret!
+      ::ActiveRecord::Base.transaction do
+        save
+        generate_otp_secret!
+      end
     end
 
     def authenticator_two_factor_auth_method?
@@ -36,7 +38,7 @@ module Users
 
     def valid_phone
       return unless sms_auth_method?
-      return if phone_number&.match(/^\+[1-9]\d{1,14}$/)
+      return if phone_number&.match(User::TWILIO_PHONE_REGEX)
 
       errors.add(:phone_number, :invalid)
     end
