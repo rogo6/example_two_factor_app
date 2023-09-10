@@ -1,6 +1,6 @@
 module ApplicationHelper
   def auth_code_info_message(send_method)
-    case send_method
+    case send_method.to_sym
     when :email
       'Code has been sent to your e-mail address. It will be valid for the next 2 minutes.'
     when :sms

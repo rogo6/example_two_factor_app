@@ -8,7 +8,7 @@ class GenerateTwoFactorAuthCodeCommand
   def call
     return :authenticator if user.authenticator_two_factor_auth_method?
 
-    if valid_twilio_number?
+    if user.sms_two_factor_auth_method? && valid_twilio_number?
       SendSmsCommand.call(user)
       :sms
     else
