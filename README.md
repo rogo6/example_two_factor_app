@@ -1,24 +1,31 @@
-# README
+# Two-Factor Authentication (Email, Sms, Authenticator App) Example with Devise-Two-Factor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+This is a sample Rails application that demonstrates the implementation of multiple two-factor authentication (2FA) methods using the `devise-two-factor` gem. Two-factor authentication adds an extra layer of security to your application by requiring users to provide a second verification step in addition to their password when logging in.
 
-* Ruby version
+## Features
 
-* System dependencies
+- User registration and authentication with email and password.
+- Two-factor authentication using time-based one-time passwords (TOTP).
+- QR code generation for TOTP setup.
+## Prerequisites
 
-* Configuration
+Before running this application, make sure you have the following installed:
 
-* Database creation
+- Ruby (version 3.x recommended)
+- Rails (version 7.x recommended)
+## Getting Started
 
-* Database initialization
+1. Clone this repository to your local machine:
 
-* How to run the test suite
+   ```bash
+   git clone <repository_url>
 
-* Services (job queues, cache servers, search engines, etc.)
+2. In your project directory:
 
-* Deployment instructions
-
-* ...
+    ```bash
+        bundle install
+        rails db:create
+        rails db:migrate
+        rails s
