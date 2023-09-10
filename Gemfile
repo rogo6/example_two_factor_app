@@ -13,7 +13,6 @@ gem "stimulus-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem 'simple_form'
-gem 'reform-rails'
 gem 'haml'
 
 gem 'devise'

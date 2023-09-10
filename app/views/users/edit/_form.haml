@@ -1,9 +1,9 @@
-= simple_form_for form, url: user_path(form.model), html: { data: { controller: 'users' }, method: :patch, id: dom_id(form.model) } do |f|
+= simple_form_for current_user, url: user_path(current_user), html: { data: { controller: 'users' }, method: :patch, id: dom_id(current_user) } do |f|
   = f.input :email
   = f.input :phone_number
   = f.input :otp_required_for_login, as: :boolean
   = f.input :two_factor_auth_method, collection: User.two_factor_auth_methods.keys, include_blank: false, input_html: { data: { 'users-target': 'twoFactorSelect', action: 'change->users#toggleQrCode' } }
-  .qrcode-box.mt-10.mb-10{ data: { 'users-target': 'qrCode' }, class: ('hidden' unless form.authenticator_two_factor_auth_method?) }
+  .qrcode-box.mt-10.mb-10{ data: { 'users-target': 'qrCode' }, class: ('hidden' unless current_user.authenticator_two_factor_auth_method?) }
     %span= "Scan this QR Code in your authenticator app"
     = qr_code_as_svg(current_user.two_factor_qr_code_uri)
   = f.submit

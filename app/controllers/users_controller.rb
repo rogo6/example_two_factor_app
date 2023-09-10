@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
-  def edit
-    @form = Users::UpdateForm.new(current_user)
-  end
+  def edit ;end
 
   def update
-    @form = Users::UpdateForm.new(current_user)
-    if @form.save_form(user_params)
+    current_user.attributes = user_params
+    if current_user.save
       flash[:notice] = "Data updated successfully"
       redirect_to edit_user_path(current_user)
     else
